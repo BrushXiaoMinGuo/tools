@@ -1,0 +1,11 @@
+
+[IntelliJ 启动tomcat 无法显示主页] (https://github.com/BrushXiaoMinGuo/tools/issues/2)
+近期在熟悉使用IntelliJ IDEA，但今天在运行项目启动Tomcat后，发现无法访问Tomcat首页，出现404错误。即输入http://localhost:8080时无法访问Tomcat首页，但却可以正确访问项目的其他页面。问题如下图所示：
+
+后台上网查找后，终于找到了一个解决办法。该问题出现是因为：我们的项目的工件输出目录在下图红色矩形框出来的地方，而不是在安装的tomcat的Apache-tomcat的webapps的目录下。所以就相当于，IDEA在H:\IdeaProjects\DialogeEngine\out\artifacts虚拟了一个Tomcat，而在H:\IdeaProjects\DialogeEngine\out\artifacts下又没有Tomcat首页的工程。而此时并没有把Tomcat首页的工程部署到服务器，所以就访问不到Tomcat首页，而访问到的是我们项目里的其他页面信息。
+
+解决办法：将Tomcat的首页的工程部署到Tomcat服务器上，部署步骤如下：
+
+选择菜单栏“Run-->Edit Configuration...-->Deployment”,选择右上角绿色“+”，选择“External Source...”，将Apache-tomcat-8.0.33的webapps目录下的ROOT文件夹选中，点击OK，及完成Tomcat的首页的工程的部署。
+
+原文：https://blog.csdn.net/wust_lh/article/details/68494434
