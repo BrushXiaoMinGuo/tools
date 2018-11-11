@@ -7,3 +7,9 @@ git 撤销某次操作
 git 删除文件
 git rm xxx  删除库文件        
 git rm --cached xxx  只删除缓存    
+
+
+git 提交
+git push 远程主机名 本地分支名:远程分支名           
+git push origin HED:refs/for/xxx             
+git remote 查看远程主机名            
